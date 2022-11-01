@@ -12,24 +12,11 @@ export class FilterPipe implements PipeTransform {
    * @returns {any[]} - a kifejezés alapján szűrt tömb.
    */
   transform(value: any[], phrase: string, key: string = ''): any {
-    // A KÖVETKEZŐ SORT TÁVOLÍTSD EL!!!
-    return value;
+    if (!Array.isArray(value) || !phrase || !key){
+      return value;
+    }
 
-    /**
-     * FELADAT!
-     * Ellenőrzés: ha a value nem tömb, vagy nincs megadva a phrase vagy a key,
-     * térj vissza a value változóval.
-     */
-
-
-    /**
-     * FELADAT!
-     * Térj vissza a value.filter metódus eredményével (a value mindig tömb).
-     * 1. Alakítsd az item[key] értékét string típusúra.
-     * 2. A visszatérési érték true, ha valahol szerepel benne a phrase.
-     * TIPP: az összehasonlítás előtt a két értéket alakítsd kisbetűsre.
-     */
-
+    return value.filter(item => String(item[key]).toLowerCase().includes(phrase))
 
   }
 

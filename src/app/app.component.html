@@ -62,7 +62,7 @@
         keyup eseményére.
        -->
       <input
-        class="form-control mr-sm-2"
+        class="form-control mr-sm-2" (keyup)="onChangePhrase($event)"
         type="text"
         placeholder="Search"
       >
@@ -74,12 +74,17 @@
   </div>
 </nav>
 <div class="container">
+  <!--<app-user-list [phraseString]="phrase" [users]="userList" (delUser)="onDeleteUser($event)"></app-user-list>-->
   <div class="row">
     <div class="col-8">
-      ...
+      <app-data-list [dataList]="userList"
+      (selectClick)="onSelectUser($event)"
+      (updateClick)="onUpdateUser($event)"
+      (deleteClick)="onDeleteUser($event)"
+      ></app-data-list>   
     </div>
     <div class="col-4">
-      ...
+      <app-user-detail [user]="currentUser" (delUser)="onDeleteUser($event)"></app-user-detail>
     </div>
   </div>
 </div>
